@@ -33,6 +33,16 @@
     {% endif %}
 </div>
 
+<div>
+    <form action="{% url 'view_contact' pk=contact.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button type="submit">Add Note</button>
+        </div>
+    </form>
+</div>
+
 <div class="flex flex-wrap">
     {% for note in notes %}
     <div class="flex">
