@@ -57,17 +57,4 @@ def view_contact(request, pk):
     })
 
 
-def edit_note(request, pk):
-    note = Note.objects.filter(note_id=pk)
-    if request.method == 'GET':
-        form = NoteForm(instance=note)
-    else:
-        form = NoteForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(to="view_contact")
 
-    return render(request, "contacts/edit_note.html", {
-        "form": form,
-        "note": note,
-    })
